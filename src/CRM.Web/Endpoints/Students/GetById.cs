@@ -29,12 +29,7 @@ namespace CRM.Web.Endpoints.Students
         {
             var student = await this.repository.GetByIdAsync<Student>(id);
 
-            return Ok(new ListStudentResponse
-            {
-                Name = student.Name,
-                Email = student.Email,
-                FirstName = student.FirstName
-            });
+            return Ok(ListStudentResponse.Create(student.Id, student.Name, student.FirstName, student.Email));
         }
     }
 }

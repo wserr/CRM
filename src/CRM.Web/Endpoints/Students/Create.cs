@@ -31,7 +31,7 @@ namespace CRM.Web.Endpoints.Students
 
             var createdItem = await repository.AddAsync(newStudent);
 
-            return Ok(createdItem);
+            return Ok(ListStudentResponse.Create(createdItem.Id, createdItem.Name, createdItem.FirstName, createdItem.Email));
         }
     }
 }
