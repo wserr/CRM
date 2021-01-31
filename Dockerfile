@@ -1,15 +1,10 @@
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
-
-# During time of preparing sample alphine image was not available
-# It is better to use alphine as base for reducing image size
-
-# FROM mcr.microsoft.com/dotnet/core/aspnet:5.0-alpine AS base
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine AS base
 
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine AS build
 
 WORKDIR /src
 

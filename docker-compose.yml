@@ -9,7 +9,7 @@ services:
       - POSTGRES_USER=crm
     volumes:
       - ./initialization:/docker-entrypoint-initdb.d
-      - postgres:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     ports:
       - 5432:5432
   flyway:
@@ -27,8 +27,8 @@ services:
     ports: 
       - 8081:80
     environment:
-      - ConnectionStrings__default= User ID=crmuser;Password=crm;Host=postgres;Port=5432;Database=crm;
+       ConnectionStrings__PostgresConnection: "User ID=crmuser;Password=crm;Host=postgres;Port=5432;Database=crm;"
     depends_on:
         - flyway
 volumes:
-  postgres:
+  postgres_data:
