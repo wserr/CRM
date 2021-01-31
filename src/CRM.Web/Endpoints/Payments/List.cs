@@ -29,11 +29,7 @@ namespace CRM.Web.Endpoints.Payments
         {
             var items = (await this.repository.ListAsync<Payment>())
                 .Where(x => x.StudentId == studentId)
-                .Select(item => new ListPaymentResponse
-                    {
-                        TimeStamp = item.TimeStamp,
-                        Amount = item.Amount
-                    });
+                .Select(item => ListPaymentResponse.Create(item.Id, item.TimeStamp, item.Amount));
 
             return Ok(items);
         }

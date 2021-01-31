@@ -32,11 +32,7 @@ namespace CRM.Web.Endpoints.Payments
 
             await this.repository.DeleteAsync<Payment>(existingPayment);
 
-            return Ok(new ListPaymentResponse
-            {
-                TimeStamp = existingPayment.TimeStamp,
-                Amount = existingPayment.Amount
-            });
+            return Ok(ListPaymentResponse.Create(existingPayment.Id, existingPayment.TimeStamp, existingPayment.Amount));
 
         }
     }

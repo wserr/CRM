@@ -32,7 +32,7 @@ namespace CRM.Web.Endpoints.Payments
 
             var createdPayment = await this.repository.AddAsync<Payment>(newPayment);
 
-            return Ok(createdPayment);
+            return Ok(ListPaymentResponse.Create(newPayment.Id, newPayment.TimeStamp, newPayment.Amount));
 
         }
     }
