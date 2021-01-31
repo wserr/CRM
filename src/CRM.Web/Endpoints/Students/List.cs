@@ -28,12 +28,7 @@ namespace CRM.Web.Endpoints.Students
         public override async Task<ActionResult<List<ListStudentResponse>>> HandleAsync()
         {
             var items = (await this.repository.ListAsync<Student>())
-                .Select(item => new ListStudentResponse
-                    {
-                        Name = item.Name,
-                        FirstName = item.FirstName,
-                        Email = item.Email
-                    });
+                .Select(item =>  ListStudentResponse.Create(item.Id, item.Name, item.FirstName, item.Email));
 
             return Ok(items);
         }

@@ -15,6 +15,8 @@ namespace CRM.Core.Entities
 
         public string Email { get; set; }
 
+        public ICollection<Payment> Payments { get; set; }
+
         public static Student Create(string name, string firstName, string mobile, string email)
         {
             return new Student()
