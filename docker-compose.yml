@@ -21,7 +21,7 @@ services:
       - postgres
   crm-api:
     build: 
-      context: .
+      context: ./api
     image: crm-api
     restart: unless-stopped
     ports: 
