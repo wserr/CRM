@@ -1,4 +1,7 @@
+import 'package:crm/widgets/contactDetailElements/headerInfo.dart';
 import 'package:flutter/material.dart';
+
+import 'contactDetailElements/payments.dart';
 
 class ContactDetail extends StatefulWidget {
   @override
@@ -14,6 +17,6 @@ class _ContactDetailState extends State<ContactDetail> {
           // the App.build method, and use it to set our appbar title.
           title: Text("Details for contact"),
         ),
-        body: Text("This is a test"));
+        body: Center(child: ListView(children: [HeaderInfo(), Payments()])));
   }
 }
