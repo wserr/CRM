@@ -1,4 +1,5 @@
 import 'package:crm/models/contact.dart';
+import 'package:crm/models/student.dart';
 import 'package:flutter/material.dart';
 
 import 'contactListViewCreator.dart';
@@ -7,8 +8,8 @@ import 'contactListViewCreator.dart';
  * This class implements the search functionality on the contacts overview page
  */
 class ContactOverviewSearch extends SearchDelegate {
-  final List<Contact> contacts;
-  ContactOverviewSearch(this.contacts);
+  final List<Student> students;
+  ContactOverviewSearch(this.students);
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -42,13 +43,13 @@ class ContactOverviewSearch extends SearchDelegate {
     );
   }
 
-  List<Contact> recentList = [];
+  List<Student> recentList = [];
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<Contact> suggestionList = [];
+    List<Student> suggestionList = [];
     query.isEmpty
-        ? suggestionList = this.contacts
-        : suggestionList.addAll(contacts.where(
+        ? suggestionList = this.students
+        : suggestionList.addAll(students.where(
             (element) => element.name.contains(query)));
 
     return suggestionList.isEmpty ? Text("Search provided no results."):ContactListViewCreator.create(suggestionList);

@@ -1,10 +1,10 @@
 import 'package:crm/helpers/routeChanger.dart';
-import 'package:crm/models/contact.dart';
+import 'package:crm/models/student.dart';
 import 'package:flutter/material.dart';
 
 class ContactListViewCreator
 {
-  static ListView create(List<Contact> contacts)
+  static ListView create(List<Student> contacts)
   {
     return ListView.builder(
         itemCount: contacts.length,
