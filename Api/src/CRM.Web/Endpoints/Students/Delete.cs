@@ -31,7 +31,7 @@ namespace CRM.Web.Endpoints.Students
 
             await this.repository.DeleteAsync<Student>(existingStudent);
 
-            return Ok(ListStudentResponse.Create(existingStudent.Id, existingStudent.Name, existingStudent.FirstName, existingStudent.Email));
+            return Ok(ListStudentResponse.Create(existingStudent.Id, existingStudent.Name, existingStudent.FirstName));
         }
     }
 }

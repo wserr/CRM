@@ -1,24 +1,21 @@
 ﻿using CRM.SharedKernel;
 using CRM.SharedKernel.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace CRM.Infrastructure.Data
 {
     public class EfRepository : IRepository
     {
-        private readonly AppDbContext _dbContext;
+        protected readonly AppDbContext _dbContext;
 
         public EfRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
-        }
-
-        public T GetById<T>(int id) where T : BaseEntity
-        {
-            return _dbContext.Set<T>().SingleOrDefault(e => e.Id == id);
         }
 
         public Task<T> GetByIdAsync<T>(int id) where T : BaseEntity

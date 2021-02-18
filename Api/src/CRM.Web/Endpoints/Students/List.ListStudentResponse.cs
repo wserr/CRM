@@ -12,16 +12,13 @@ namespace CRM.Web.Endpoints.Students
 
         public string FirstName { get; set; }
 
-        public string Email { get; set; }
-
-        public static ListStudentResponse Create(int id, string name, string firstName, string email)
+        public static ListStudentResponse Create(int id, string name, string firstName)
         {
             return new ListStudentResponse()
             {
                 Id = id,
                 Name = name,
-                FirstName = firstName,
-                Email = email
+                FirstName = firstName
             };
         }
     }

@@ -3,6 +3,7 @@ using CRM.Core;
 using CRM.Core.Interfaces;
 using CRM.Infrastructure.Data;
 using CRM.Infrastructure.DomainEvents;
+using CRM.Infrastructure.Interfaces;
 using CRM.SharedKernel.Interfaces;
 using System.Collections.Generic;
 using System.Reflection;
@@ -46,6 +47,8 @@ namespace CRM.Infrastructure
             builder.RegisterType<DomainEventDispatcher>().As<IDomainEventDispatcher>()
                 .InstancePerLifetimeScope();
             builder.RegisterType<EfRepository>().As<IRepository>()
+                .InstancePerLifetimeScope();
+            builder.RegisterType<StudentRepository>().As<IStudentRepository>()
                 .InstancePerLifetimeScope();
 
             builder.RegisterAssemblyTypes(_assemblies.ToArray())

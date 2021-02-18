@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace CRM.Web.Endpoints.Students
 {
-    public class GetById : BaseAsyncEndpoint<int, ListStudentResponse>
+    public class GetById : BaseAsyncEndpoint<int, GetByIdResponse>
     {
-        private readonly IRepository repository;
+        private readonly IStudentRepository repository;
 
-        public GetById(IRepository repository)
+        public GetById(IStudentRepository repository)
         {
             this.repository = repository;
         }
@@ -25,11 +25,12 @@ namespace CRM.Web.Endpoints.Students
             Description = "Gets a single Student by Id",
             OperationId = "Student.GetById",
             Tags = new[] { "StudentEndpoints" })]
-        public override async Task<ActionResult<ListStudentResponse>> HandleAsync(int id)
+        public override async Task<ActionResult<GetByIdResponse>> HandleAsync(int id)
         {
-            var student = await this.repository.GetByIdAsync<Student>(id);
+            var student = await this.repository.GetByIdWithPaymentsAsync(id);
+            var model = new GetByIdResponse(student.Name, student.FirstName, student.Email, student.Payments.Select(x => new PaymentModel(x.TimeStamp, x.Amount)).ToList());
 
-            return Ok(ListStudentResponse.Create(student.Id, student.Name, student.FirstName, student.Email));
+            return Ok(model);
         }
     }
 }

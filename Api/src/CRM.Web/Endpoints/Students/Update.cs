@@ -35,7 +35,7 @@ namespace CRM.Web.Endpoints.Students
 
             await this.repository.UpdateAsync<Student>(existingStudent);
 
-            return ListStudentResponse.Create(existingStudent.Id, existingStudent.Name, existingStudent.FirstName, existingStudent.Email);
+            return ListStudentResponse.Create(existingStudent.Id, existingStudent.Name, existingStudent.FirstName);
 
         }
     }
