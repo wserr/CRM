@@ -1,10 +1,7 @@
 ﻿using Ardalis.ApiEndpoints;
-using CRM.Core.Entities;
-using CRM.SharedKernel.Interfaces;
+using CRM.Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 

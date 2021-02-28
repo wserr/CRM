@@ -10,9 +10,8 @@ class Student
   int id;
   String name;
   String firstName;
-  String email;
 
-  Student(this.id, this.name, this.firstName, this.email);  
+  Student(this.id, this.name, this.firstName);  
 
   static Student fromJson(Map<String,dynamic> input)
   {

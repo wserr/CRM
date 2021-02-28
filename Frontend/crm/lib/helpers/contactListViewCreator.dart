@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 
 class ContactListViewCreator
 {
-  static ListView create(List<Student> contacts)
+  static ListView create(List<Student> students)
   {
     return ListView.builder(
-        itemCount: contacts.length,
+        itemCount: students.length,
         itemBuilder: (context, index) => ListTile(
           title: Text(
-            contacts[index].name,
+            students[index].firstName + " " + students[index].name,
           ),
           leading: Icon(Icons.person),
           trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: () => {RouteChanger.change(context)},
+          onTap: () => {RouteChanger.change(context, students[index].id, students[index].firstName)},
         ),
       );
   }

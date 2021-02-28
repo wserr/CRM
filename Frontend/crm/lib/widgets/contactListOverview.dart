@@ -1,7 +1,6 @@
 import 'package:crm/helpers/contactListViewCreator.dart';
 import 'package:crm/helpers/contactOverviewSearch.dart';
 import 'package:crm/models/student.dart';
-import 'package:crm/models/studentResponse.dart';
 import 'package:crm/services/studentService.dart';
 import 'package:flutter/material.dart';
 

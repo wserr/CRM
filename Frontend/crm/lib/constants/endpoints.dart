@@ -1,4 +1,6 @@
 class Endpoints
 {
-  static final String getStudentsEndpoint = '/Students';
+  static String getStudentsEndpoint() => '/Students';
+
+  static String getStudentDetailEndpoint(int id) => '/Students/' + id.toString();
 }

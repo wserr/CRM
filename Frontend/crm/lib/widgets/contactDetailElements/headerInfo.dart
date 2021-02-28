@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class HeaderInfo extends StatefulWidget {
+  final String email;
+  HeaderInfo(this.email);
+
   @override
   _HeaderInfoState createState() => _HeaderInfoState();
 }
@@ -8,34 +11,21 @@ class HeaderInfo extends StatefulWidget {
 class _HeaderInfoState extends State<HeaderInfo> {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return Container(
         margin: EdgeInsets.all(5.0),
-        height: height / 5,
+        height: 100.0,
         child: Card(
-            elevation: 4.0,
+            elevation: 2.0,
             child: Row(mainAxisSize: MainAxisSize.max, children: <Widget>[
-              Spacer(),
               Container(
-                  margin: EdgeInsets.all(10.0),
-                  width: width / 10,
-                  height: height / 5,
-                  child: Stack(fit: StackFit.expand, children: [
-                    Icon(Icons.person, color: Colors.grey, size: height/10),
-                    Align(
-                        child: CircleAvatar(
-                            child: Icon(Icons.check, size: height/40, color: Colors.black),
-                            backgroundColor: Colors.lightGreen,
-                            radius: height / 40),
-                        alignment: Alignment.topRight)
-                  ])),
-              Spacer(),
-              Container(
-                  width: width/3*2,
-                  height: height / 7,
+                  margin: EdgeInsets.all(20.0),
+                  child: CircleAvatar(
+                            child: Icon(Icons.check, color: Colors.black),
+                            backgroundColor: Colors.lightGreen),
+                        alignment: Alignment.center),
+              Expanded(
                   child: TextFormField(
-                    initialValue: "serruys.willem@hotmail.com",
+                    initialValue: this.widget.email,
                     decoration: InputDecoration(
                         labelText: "E-mail",
                         enabled: false,
@@ -44,7 +34,6 @@ class _HeaderInfoState extends State<HeaderInfo> {
                                 color: Colors.white70,
                                 style: BorderStyle.solid))),
                   )),
-              Spacer(flex: 8)
             ])));
   }
 }

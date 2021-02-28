@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:crm/constants/config.dart';
 import 'package:crm/constants/endpoints.dart';
 import 'package:crm/models/student.dart';
+import 'package:crm/models/studentDetail.dart';
 import 'package:http/browser_client.dart';
 
 class StudentService {
@@ -14,7 +15,7 @@ class StudentService {
   }
 
   Future<List<Student>> getStudents() async {
-    var endpoint = Uri.parse(Config.apiUrl + Endpoints.getStudentsEndpoint);
+    var endpoint = Uri.parse(Config.apiUrl + Endpoints.getStudentsEndpoint());
     var response = await client.get(endpoint);
 
     if (response.statusCode != 200) {
@@ -26,5 +27,20 @@ class StudentService {
     return students.map((student) {
       return Student.fromJson(student);
     }).toList();
+  }
+
+  Future<StudentDetail> getStudentDetail(int id) async {
+    
+    var endpoint = Uri.parse(Config.apiUrl + Endpoints.getStudentDetailEndpoint(id));
+    var response = await client.get(endpoint);
+
+    if (response.statusCode != 200) {
+      return Future.error('Something went wrong during fetching of students.');
+    }
+
+    var studentDetail = jsonDecode(response.body);
+
+    return StudentDetail.fromJson(studentDetail);
+
   }
 }

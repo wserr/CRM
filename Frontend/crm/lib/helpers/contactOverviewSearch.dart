@@ -1,4 +1,3 @@
-import 'package:crm/models/contact.dart';
 import 'package:crm/models/student.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +49,7 @@ class ContactOverviewSearch extends SearchDelegate {
     query.isEmpty
         ? suggestionList = this.students
         : suggestionList.addAll(students.where(
-            (element) => element.name.contains(query)));
+            (element) => element.name.contains(query) || element.firstName.contains(query)));
 
     return suggestionList.isEmpty ? Text("Search provided no results."):ContactListViewCreator.create(suggestionList);
   }
