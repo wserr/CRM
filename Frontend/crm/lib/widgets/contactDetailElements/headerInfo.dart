@@ -20,7 +20,7 @@ class _HeaderInfoState extends State<HeaderInfo> {
               Container(
                   margin: EdgeInsets.all(20.0),
                   child: CircleAvatar(
-                            child: Icon(Icons.check, color: Colors.black),
+                            child: Icon(Icons.check),
                             backgroundColor: Colors.lightGreen),
                         alignment: Alignment.center),
               Expanded(

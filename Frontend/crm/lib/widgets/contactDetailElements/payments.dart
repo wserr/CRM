@@ -27,9 +27,29 @@ class _PaymentsState extends State<Payments> {
     return payments;
   }
 
+  Widget noPayments()
+  {
+    return Center(child: Text("No Payments found."));
+  }
+
+  Widget paymentTable()
+  {
+    return SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: DataTable(columns: [
+                                DataColumn(label: Text("Date",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subtitle1)),
+                                DataColumn(label: Text("Amount",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subtitle1))
+                              ], rows: this.getPayments()));
+  }
+
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Container(
         margin: EdgeInsets.all(5.0),
@@ -38,17 +58,11 @@ class _PaymentsState extends State<Payments> {
             elevation: 2.0,
             child: Container(
                 margin: EdgeInsets.fromLTRB(60.0,10.0,40.0,60.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                child: Container(
+                    child: 
                       Container(
                           width: width,
-                          child: SingleChildScrollView(
-                              scrollDirection: Axis.vertical,
-                              child: DataTable(columns: [
-                                DataColumn(label: Text("Date")),
-                                DataColumn(label: Text("Amount"))
-                              ], rows: this.getPayments())))
-                    ]))));
+                          child: (this.widget.payments.length==0?noPayments():paymentTable()))
+                    ))));
   }
 }

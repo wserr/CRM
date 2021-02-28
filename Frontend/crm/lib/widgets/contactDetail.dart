@@ -50,7 +50,7 @@ class _ContactDetailState extends State<ContactDetail> {
                                   child: Text("General Info",
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle1)),
+                                          .headline6)),
                               HeaderInfo(this.detail.email),
                               SizedBox(height: 10.0),
                               Container(
@@ -58,7 +58,7 @@ class _ContactDetailState extends State<ContactDetail> {
                                   child: Text("Payments",
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle1)),
+                                          .headline6)),
                               Payments(this.detail.payments ?? [])
                             ])));
                   } else {
