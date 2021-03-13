@@ -57,7 +57,7 @@ class _PaymentsState extends State<Payments> {
         child: Card(
             elevation: 2.0,
             child: Container(
-                margin: EdgeInsets.fromLTRB(60.0,10.0,40.0,60.0),
+                margin: EdgeInsets.fromLTRB(30.0,10.0,30.0,10.0),
                 child: Container(
                     child: 
                       Container(
