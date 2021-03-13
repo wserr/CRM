@@ -1,5 +1,5 @@
 ---
-version: '3'
+version: "3"
 services:
   postgres:
     image: postgres
@@ -20,15 +20,17 @@ services:
     depends_on:
       - postgres
   crm-api:
-    build: 
+    build:
       context: ./api
     image: crm-api
     restart: unless-stopped
     environment:
-       ConnectionStrings__PostgresConnection: "User ID=crmuser;Password=crm;Host=postgres;Port=5432;Database=crm;"
+      ConnectionStrings__PostgresConnection: "User ID=crmuser;Password=crm;Host=postgres;Port=5432;Database=crm;"
+      Identity__Url: "https://keycloak.willemserruys.com/auth/realms/master"
+      Identity__Audience: "master-realm"
     depends_on:
-        - flyway
-    ports: 
+      - flyway
+    ports:
       - 8081:80
   crm-frontend:
     build:
