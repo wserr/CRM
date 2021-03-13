@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CRM.Web.Endpoints.Payments
 {
@@ -19,6 +20,7 @@ namespace CRM.Web.Endpoints.Payments
             this.repository = repository;
         }
 
+        [Authorize]
         [HttpGet("/Payments")]
         [SwaggerOperation(
             Summary = "Gets a list of all Payments for a studentID",

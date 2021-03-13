@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CRM.Web.Endpoints.Students
 {
@@ -19,6 +20,7 @@ namespace CRM.Web.Endpoints.Students
             this.repository = repository;
         }
 
+        [Authorize]
         [HttpPut("/Students")]
         [SwaggerOperation(
             Summary = "Updates a Student",

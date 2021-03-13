@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CRM.Web.Endpoints.Payments
 {
@@ -19,6 +20,7 @@ namespace CRM.Web.Endpoints.Payments
             this.repository = repository;
         }
 
+        [Authorize]
         [HttpPost("/Payments")]
         [SwaggerOperation(
             Summary = "Creates a new Payment",
