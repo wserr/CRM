@@ -49,10 +49,6 @@ class _ContactListOverviewState extends State<ContactListOverview> {
             if (snapshot.hasData) {
               return ContactListViewCreator.create(students);
             } else {
-              if(snapshot.hasError)
-              {
-                return Text(snapshot.error);
-              }
               return Center(child: CircularProgressIndicator());
             }
           }, //ContactListViewCreator.create(widget.contacts),
