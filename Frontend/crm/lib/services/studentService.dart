@@ -21,11 +21,6 @@ class StudentService {
     var endpoint = Uri.parse(Config.apiUrl + Endpoints.getStudentsEndpoint());
     var response = await client.getWithAuthHeader(endpoint);
 
-    if (response.statusCode == 401) {
-      authService.login();
-      return Future.error('Unauthorized');
-    }
-
     if (response.statusCode != 200) {
       return Future.error('Something went wrong during fetching of students.');
     }
@@ -41,11 +36,6 @@ class StudentService {
     var endpoint =
         Uri.parse(Config.apiUrl + Endpoints.getStudentDetailEndpoint(id));
     var response = await client.getWithAuthHeader(endpoint);
-
-    if (response.statusCode == 401) {
-      authService.login();
-      return Future.error('Unauthorized');
-    }
 
     if (response.statusCode != 200) {
       return Future.error('Something went wrong during fetching of students.');

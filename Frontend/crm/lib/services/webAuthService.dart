@@ -28,8 +28,6 @@ class WebAuthService {
   }
 
   WebAuthService._internal() {
-    // This message is for testing purposes only.
-    print('New instance of WebAuthService is created.');
     params = new AuthParameters(
         Config.authority,
         Config.clientId,
@@ -42,4 +40,5 @@ class WebAuthService {
         Config.postLogoutRedirectUri);
     window.sessionStorage['auth_settings'] = jsonEncode(params);
   }
+
 }

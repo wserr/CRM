@@ -13,7 +13,7 @@ class AuthParameters
   AuthParameters(this.authority, this.clientId, this.clientSecret, this.redirectUri,
   this.responseType, this.scope, this.filterProtocolClaims, this.loadUserInfo,
   this.postLogoutRedirectUri);
-
+  
   Map toJson() => {
     'authority': authority,
     'client_id': clientId,
