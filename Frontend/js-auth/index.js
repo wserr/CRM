@@ -20,7 +20,7 @@ let settings = {
   post_logout_redirect_uri: "logoutcallback",
 };
 
-window.localStorage.setItem("auth_settings", JSON.stringify(settings));
+window.sessionStorage.setItem("auth_settings", JSON.stringify(settings));
 
 function initiateLogin()
 {

@@ -7,16 +7,25 @@ window.addEventListener("logout", function () {
   redirectToLogout();
 });
 
-let settings = JSON.parse(window.sessionStorage['auth_settings']);
-settings.redirect_uri = window.location.origin + "/" + settings.redirect_uri;
-settings.post_logout_redirect_uri = window.location.origin + "/" + settings.post_logout_redirect_uri;
-let mgr = new Oidc.UserManager(settings);
+let mgr = undefined;
+
+function initializeManager() {
+  if (mgr == undefined) {
+    let settings = JSON.parse(window.sessionStorage["auth_settings"]);
+    settings.redirect_uri =
+      window.location.origin + "/" + settings.redirect_uri;
+    settings.post_logout_redirect_uri =
+      window.location.origin + "/" + settings.post_logout_redirect_uri;
+    mgr = new Oidc.UserManager(settings);
+  }
+}
 
 //
 // Redirect to KeyCloak to authenticate the user
 //
 function redirectToLogin() {
-  window.sessionStorage.setItem('callback_url', window.location);
+  window.sessionStorage.setItem("callback_url", window.location);
+  initializeManager();
   mgr
     .signinRedirect()
     .then(function () {
@@ -40,13 +49,14 @@ if (window.location.href.indexOf("logincallback") >= 0) {
 // by idp after the user has attempted to authenticate
 //
 function processLoginResponse() {
+  initializeManager();
   mgr
     .signinRedirectCallback()
     .then(function (user, bb) {
-      window.sessionStorage.setItem('access_token', user.access_token);
+      window.sessionStorage.setItem("access_token", user.access_token);
       let event = new CustomEvent("login_success");
       window.dispatchEvent(event);
-      window.location = window.sessionStorage['callback_url'];
+      window.location = window.sessionStorage["callback_url"];
     })
     .catch(function (err) {
       console.log(err);
@@ -57,6 +67,7 @@ function processLoginResponse() {
 // Logout
 //
 function redirectToLogout() {
+  initializeManager();
   mgr
     .signoutRedirect()
     .then(function () {})
@@ -70,7 +81,7 @@ function redirectToLogout() {
 // by idp after the user has attempted to authenticate
 //
 function processLogoutResponse() {
-  window.sessionStorage.removeItem('access_token');
+  window.sessionStorage.removeItem("access_token");
   let event = new CustomEvent("logout_success");
   window.dispatchEvent(event);
 }
