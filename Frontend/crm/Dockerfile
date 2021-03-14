@@ -37,5 +37,8 @@ FROM nginx:alpine as base
 # Copy build files to this image
 COPY --from=build-env /usr/local/bin/app/build/web /usr/share/nginx/html 
 
+# Copy nginx configuration
+COPY ./web/nginx/default.conf /etc/nginx/conf.d/default.conf
+
 # Expose port 80 on this image
 EXPOSE 80

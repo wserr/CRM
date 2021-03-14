@@ -36,7 +36,14 @@ services:
     build:
       context: ./Frontend/crm
       args:
-        build_command: flutter build web --dart-define base_url=http://localhost:8081
+        build_command: 
+          flutter build web
+          --dart-define base_url=http://localhost:8081
+          --dart-define authority=https://keycloak.willemserruys.com/auth/realms/master
+          --dart-define clientId=testclient
+          --dart-define clientSecret=591abb2f-2291-4c9e-af7b-1376e5ea367b
+          --dart-define redirectUri=logincallback
+          --dart-define postLogoutRedirectUri=logoutcallback
     image: crm-frontend
     restart: unless-stopped
     ports:
