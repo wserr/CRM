@@ -1,9 +1,14 @@
+import 'dart:html';
+
+import 'package:crm/constants/config.dart';
 import 'package:crm/widgets/contactListOverview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
 void main() async {
   //WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
   //await FlutterConfig.loadEnvVariables();
+  await DotEnv.load(fileName: ".env");
   runApp(MyApp());
 }
 

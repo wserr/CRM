@@ -29,7 +29,7 @@ RUN flutter pub get
 
 ARG build_command
 # Build the app for the web
-RUN $build_command
+RUN flutter build web
 
 # use the nginx:alpine image for publishing
 FROM nginx:alpine as base
@@ -39,6 +39,9 @@ COPY --from=build-env /usr/local/bin/app/build/web /usr/share/nginx/html
 
 # Copy nginx configuration
 COPY ./web/nginx/default.conf /etc/nginx/conf.d/default.conf
+
+# Copy .env file
+COPY ./assets/$environment.env /usr/share/nginx/html/assets/.env
 
 # Expose port 80 on this image
 EXPOSE 80

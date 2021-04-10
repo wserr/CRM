@@ -20,7 +20,11 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.7.0 <3.0.0"
 
+assets:
+  - .env
+
 dependencies:
+  flutter_dotenv: ^3.1.0
   intl: ^0.16.1
   http: ^0.12.2
   flutter_config: ^1.0.8
